@@ -1,0 +1,29 @@
+{% extends 'catalogue/base.html' %}
+
+{% block title %}商品一覧{% endblock %}
+
+{% block content %}
+    <form>
+      {{ form }}
+      <input type="submit" value="検索">
+    </form>
+    <hr>
+
+    {% for product in products %}
+      <li>({{ product.category.name }}) <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>: {{ product.price }}円</li>
+    {% endfor %}
+
+    {% if products.has_previous %}
+      <a href="?page={{ products.previous_page_number }}&{{ search_params }}">&lt; 前のページ</a>
+    {% else %}
+      <span>&lt; 前のページ</span>
+    {% endif %}
+
+    {{ products.number }}ページ
+
+    {% if products.has_next %}
+      <a href="?page={{ products.next_page_number }}&{{ search_params }}">次のページ &gt;</a>
+    {% else %}
+      <span>次のページ &gt;</span>
+    {% endif %}
+{% endblock %}

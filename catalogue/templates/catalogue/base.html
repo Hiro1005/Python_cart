@@ -1,0 +1,16 @@
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ECサイト - {% block title %}{% endblock %}</title>
+</head>
+
+<body>
+<a href="{% url 'product_list' %}">商品一覧</a>
+<a href="{% url 'cart_list' %}">カート</a>
+<hr>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

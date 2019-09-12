@@ -1,0 +1,16 @@
+{% extends 'catalogue/base.html' %}
+
+{% block title %}商品詳細{% endblock %}
+
+{% block content %}
+  <h3>{{ product.name }}</h3>
+  {{ product.price }}円
+
+  <form method="post" action="{% url 'cart_add' product.id %}">
+    {% csrf_token %}
+    <input type="submit" value="カートに追加">
+  </form>
+
+  <a href="{% url 'product_edit' product.id %}">編集</a>
+  <a href="{% url 'product_delete' product.id %}">削除</a>
+{% endblock %}

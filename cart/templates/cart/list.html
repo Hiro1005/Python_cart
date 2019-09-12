@@ -1,0 +1,20 @@
+{% extends 'catalogue/base.html' %}
+
+{% block title %}カート{% endblock %}
+
+{% block content %}
+  <ul>
+    {% for product in products %}
+      <li>
+        {{ product.name }}: {{ product.price }}円
+
+        <form method="post" action="{% url 'cart_delete' product.id %}">
+          {% csrf_token %}
+          <input type="submit" value="削除">
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+
+  合計金額: {{ total_price }}円
+{% endblock %}

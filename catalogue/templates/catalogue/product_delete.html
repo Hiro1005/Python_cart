@@ -1,0 +1,12 @@
+{% extends 'catalogue/base.html' %}
+
+{% block title %}商品削除{% endblock %}
+
+{% block content %}
+  <h3>{{ product.name }}</h3>
+  <p>削除してもよろしいですか？</p>
+  <form method="post">
+    {% csrf_token %}
+    <input type="submit" value="削除">
+  </form>
+{% endblock %}
